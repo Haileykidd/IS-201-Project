@@ -1,0 +1,108 @@
+.common{
+    text-align: center;
+    font-family: Arial, helvetica, sans-serif;
+}
+
+.header{
+    height: 100px;
+    Background-color: darkslategray;
+    color:white;
+    line-height: 100px;
+}
+
+.mainbody{
+    background-color: whitesmoke;
+}
+
+
+
+
+.img{
+    display: block;
+   margin: 10px;
+    width: 20%;
+}
+
+nav a{
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+
+nav a:hover{
+    background-color: darkslategray ;
+}
+
+  
+  
+  
+  /* Video Section */
+  .video {
+    background-color: whitesmoke;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  /* Tableau Section */
+  .data {
+    background-color: lightgray;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: darkslategray;
+    color: white;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  /* Center the Tableau container */
+.tableau-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the container takes up full viewport height */
+    margin: 0; /* Remove default margins */
+  }
+  
+  /* Adjust the size of the embedded Tableau visualization */
+  .tableauPlaceholder {
+    width: 80%; /* Adjust width as needed */
+    max-width: 1000px; /* Optional: Set a maximum width */
+    margin: 0 auto; /* Center the element horizontally */
+  }
+
+  ol, ul {
+    list-style-position: inside; /* Moves bullets/numbers closer to the text */
+    padding-left: 1rem; /* Optional: adjust spacing */
+    text-align: left;   /* Ensures text alignment is clean */
+    margin: 0 auto;     /* Centers the list block horizontally */
+    max-width: 600px;   /* Optional: keeps content readable */
+  }
+/* Center the entire list section */
+.centered-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  /* Style for ordered and unordered lists */
+  .centered-list ol,
+  .centered-list ul {
+    list-style-position: inside;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  /* Style individual list items */
+  .centered-list li {
+    font-weight: bold;
+    margin: 0.5rem 0; /* Adds space between items */
+  }
+ 
