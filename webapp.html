@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Riddle Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .riddle {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Riddle Me This!</h1>
+    <div class="riddle" id="riddleText">Click the button to get a riddle.</div>
+    <input type="text" id="userGuess" placeholder="Your guess..." disabled />
+    <button onclick="checkGuess()">Submit Guess</button>
+    <button onclick="newRiddle()">New Riddle</button>
+    <div class="feedback" id="feedbackText"></div>
+  </div>
+
+  <script>
+    const riddles = [
+      {
+        question: "I speak without a mouth and hear without ears. I have nobody, but I come alive with the wind. What am I?",
+        answer: "echo"
+      },
+      {
+        question: "The more of me you take, the more you leave behind. What am I?",
+        answer: "footsteps"
+      },
+      {
+        question: "What has to be broken before you can use it?",
+        answer: "egg"
+      },
+      {
+        question: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
+        answer: "candle"
+      },
+      {
+        question: "What is full of holes but still holds water?",
+        answer: "sponge"
+      }
+    ];
+
+    let currentRiddle = {};
+    let attempts = 0;
+    let riddleSolved = false;
+
+    function newRiddle() {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      currentRiddle = riddles[randomIndex];
+      document.getElementById("riddleText").textContent = currentRiddle.question;
+      document.getElementById("userGuess").value = "";
+      document.getElementById("feedbackText").textContent = "";
+      document.getElementById("userGuess").disabled = false;
+      attempts = 0;
+      riddleSolved = false;
+    }
+
+    function checkGuess() {
+      const userGuess = document.getElementById("userGuess").value.trim().toLowerCase();
+
+      if (!currentRiddle.question) {
+        document.getElementById("feedbackText").textContent = "Please click 'New Riddle' to begin.";
+        return;
+      }
+
+      if (riddleSolved) {
+        document.getElementById("feedbackText").textContent = "You already solved this riddle! Click 'New Riddle' to try another.";
+        return;
+      }
+
+      attempts++;
+
+      if (userGuess === currentRiddle.answer.toLowerCase()) {
+        document.getElementById("feedbackText").textContent = `🎉 Correct! It took you ${attempts} attempt(s). Click 'New Riddle' to try another.`;
+        document.getElementById("userGuess").disabled = true;
+        riddleSolved = true;
+      } else {
+        document.getElementById("feedbackText").textContent = `❌ Incorrect. Try again! (Attempt ${attempts})`;
+      }
+    }
+  </script>
+</body>
+</html>
